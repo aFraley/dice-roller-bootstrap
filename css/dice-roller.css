@@ -1,0 +1,31 @@
+/* Sticky Footer
+------------------------------------------------------------------------------*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+}
+
+/* Application
+------------------------------------------------------------------------------*/
+input {
+  text-align: center;
+}
+
+#mod {
+  width: 70px;
+}
+
+#reset {
+  margin-bottom: 5px;
+}
