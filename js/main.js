@@ -53,7 +53,6 @@ $(function(){
 
   // Clear the output area.
   $('#clear').click(function(){
-    console.log($('#test').val());
     $('#output').text('');
   });
 
