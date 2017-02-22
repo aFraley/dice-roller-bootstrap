@@ -29,3 +29,7 @@ input {
 #reset {
   margin-bottom: 5px;
 }
+
+#app {
+  padding: 5px;
+}

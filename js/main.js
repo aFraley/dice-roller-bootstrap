@@ -1,8 +1,7 @@
 $(function(){
   console.log('running: Dice Roller');
 
-  // Model
-  //============================================================================
+  // dice object
   var dice = {
     numDice: 0,
     numSides: 0,
@@ -13,52 +12,65 @@ $(function(){
       }
       return result;
     }
-  }
+  };
 
-  var count = 0;
+  // application object
+  var diceRoller = {
+    count: 0,
+      numDice: $('#num-dice'),
+      numSides: $('#num-sides'),
+      mod: $('#mod'),
+      output: $('#output'),
+      roll: $('#roll'),
+      initialize: function () {
+          this.numDice.val(1);
+          this.numSides.val(20);
+          this.mod.val(0);
+          this.output.empty();
+      },
+      clear: function () {
+          this.output.empty();
+      }
+  };
 
-  // Controller
-  //============================================================================
-  function initialState(){
-    $('#num-dice').val(1);
-    $('#num-sides').val(20);
-    $('#mod').val(0);
-  }
-  initialState();   // Initialize the state of the app.
+  // Initialize the application.
+  diceRoller.count = 0;
+  diceRoller.initialize();
 
-  // Set the state of the app.
-  $('#roll').click(function() {
-    dice.numDice = $('#num-dice').val();
-    dice.numSides = $('#num-sides').val();
-    dice.mod = $('#mod').val()
-    count += 1;
+  // Application logic.
+  diceRoller.roll.click(function() {
+    dice.numDice = diceRoller.numDice.val();
+    dice.numSides = diceRoller.numSides.val();
+    dice.mod = diceRoller.mod.val();
+    diceRoller.count += 1;
 
     var roll = dice.roll();
     var modResult = Number(roll) + Number(dice.mod);
+    var modOutput;
 
     if (dice.mod >= 0) {
-      var modOutput = roll + " + " + dice.mod + " = " + modResult;
+      modOutput = roll + " + " + dice.mod + " = " + modResult;
     }else {
-      var modOutput = roll + " - " + Math.abs(dice.mod) + " = " + modResult;
+      modOutput = roll + " - " + Math.abs(dice.mod) + " = " + modResult;
     }
 
 
     var diceOutput = dice.numDice + "d" + dice.numSides;
-    var rollCount = "Roll " + count + ": ";
+    var rollCount = "Roll " + diceRoller.count + ": ";
     var output = rollCount + diceOutput + "[" + roll + "]<br>" + modOutput;
 
-    $('#output').append(output, '<br>');
+    diceRoller.output.prepend('<p>' + output + '</p>');
 
   });
 
   // Clear the output area.
   $('#clear').click(function(){
-    $('#output').text('');
+    diceRoller.output.empty();
   });
 
   // Set state of the app back to initial state.
   $('#reset').click(function(){
-    initialState();
+    diceRoller.initialize();
   })
 
 });
