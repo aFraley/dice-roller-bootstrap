@@ -23,13 +23,15 @@ $(function(){
       output: $('#output'),
       roll: $('#roll'),
       initialize: function () {
-          this.numDice.val(1);
-          this.numSides.val(20);
-          this.mod.val(0);
-          this.output.empty();
+        this.count = 0;
+        this.numDice.val(1);
+        this.numSides.val(20);
+        this.mod.val(0);
+        this.output.empty();
       },
       clear: function () {
-          this.output.empty();
+        this.count = 0;
+        this.output.empty();
       }
   };
 
@@ -65,7 +67,7 @@ $(function(){
 
   // Clear the output area.
   $('#clear').click(function(){
-    diceRoller.output.empty();
+    diceRoller.clear()
   });
 
   // Set state of the app back to initial state.
