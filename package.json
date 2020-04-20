@@ -7,7 +7,7 @@
     "test": "echo 'Hello'",
     "dev": "gulp",
     "start": "electron .",
-    "build": "electron-packager ."
+    "build": "electron-packager . --overwrite"
   },
   "keywords": [
     "jquery",
@@ -17,11 +17,11 @@
   "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.18.1",
-    "electron": "^1.4.15",
-    "electron-packager": "^8.5.2",
-    "gulp": "^3.9.1",
+    "electron": "^8.2.3",
+    "electron-packager": "^14.2.1",
+    "gulp": "^4.0.2",
     "gulp-cached": "^1.1.1",
-    "gulp-clean-css": "^2.0.13",
+    "gulp-clean-css": "^4.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-remember": "^0.3.1",
     "gulp-sourcemaps": "^2.2.0",

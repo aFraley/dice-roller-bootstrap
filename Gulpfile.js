@@ -32,30 +32,42 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('browser-sync', ['cleanCSS', 'scripts'], function() {
-  browserSync.init({
-    server: {
-      baseDir: './'
-    }
-  });
+gulp.task('build', gulp.series('cleanCSS', 'scripts'), function() {
+    browserSync.init({
+        server: {
+            baseDir: './'
+        }
+    })
 
-  gulp.watch(paths.css, ['cleanCSS']).on('change', function(event){
-    if(event.type === 'deleted'){
-      delete cache.caches['css'][event.path];
-      remember.forget('css', event.path);
-      console.log('updated cache');
-    }
-  });
+    gulp.watch('')
+})
 
-  gulp.watch(paths.scripts, ['scripts']).on('change', function(event) {
-    if(event.type === 'deleted'){
-      delete cache.caches['scripts'][event.path];
-      remember.forget('scripts', event.path);
-      console.log('updated cache');
-    }
-  });
+gulp.task('default', gulp.series('build'))
 
-  gulp.watch(paths.base).on('change', browserSync.reload);
-});
+// gulp.task('browser-sync', ['cleanCSS', 'scripts'], function() {
+//   browserSync.init({
+//     server: {
+//       baseDir: './'
+//     }
+//   });
 
-gulp.task('default', ['browser-sync']);
+//   gulp.watch(paths.css, ['cleanCSS']).on('change', function(event){
+//     if(event.type === 'deleted'){   
+//       delete cache.caches['css'][event.path];
+//       remember.forget('css', event.path);
+//       console.log('updated cache');
+//     }
+//   });
+
+//   gulp.watch(paths.scripts, ['scripts']).on('change', function(event) {
+//     if(event.type === 'deleted'){
+//       delete cache.caches['scripts'][event.path];
+//       remember.forget('scripts', event.path);
+//       console.log('updated cache');
+//     }
+//   });
+
+//   gulp.watch(paths.base).on('change', browserSync.reload);
+// });
+
+// gulp.task('default', ['browser-sync']);

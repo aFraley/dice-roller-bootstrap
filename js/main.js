@@ -7,8 +7,9 @@ $(function(){
     numSides: 0,
     mod: 0,
     roll: function() {
+      var result = 0;
       for (var i = 0; i < dice.numDice; i++){
-        var result = Math.floor(Math.random() * dice.numSides) + 1;
+        result += Math.floor(Math.random() * dice.numSides) + 1;
       }
       return result;
     }
@@ -46,7 +47,7 @@ $(function(){
     dice.mod = diceRoller.mod.val();
     diceRoller.count += 1;
 
-    var roll = dice.roll();
+    var roll = dice.roll(); 
     var modResult = Number(roll) + Number(dice.mod);
     var modOutput;
 

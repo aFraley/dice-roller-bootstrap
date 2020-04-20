@@ -87,7 +87,7 @@ coverage
 build/Release
 
 # Dependency directories
-node_modules
+node_modules/
 jspm_packages
 
 # Optional npm cache directory
@@ -108,3 +108,4 @@ jspm_packages
 .idea/
 
 dice-roller-bootstrap-linux-ia32/
+dice-roller-bootstrap-darwin-x64/
